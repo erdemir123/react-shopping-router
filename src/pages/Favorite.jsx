@@ -4,15 +4,19 @@ import Pars from "../asset/images/pars.png";
 import Loading from "../asset/images/loading.gif";
 import { useNavigate } from "react-router-dom";
 import { AiFillCloseCircle } from "react-icons/ai";
+import { useContext } from "react";
+import mainContex from "../Context/MainContex";
 
-const Favorite = ({func , favorList}) => {
+const Favorite = () => {
+  const  {setFavorList,favorList}=useContext(mainContex)
+  console.log(favorList);
   const [load, setLoad] = useState(true);
   // const favoriteList = JSON.parse(localStorage.getItem("favoriteList")) || [];
   const navigate = useNavigate();
   const deleteFavor = (id) => {
-    const newFavor =favorList.filter((product) => product.id !== id);
+    const newFavor =favorList?.filter((product) => product.id !== id);
     localStorage.setItem("favoriteList", JSON.stringify(newFavor));
-    func(newFavor);
+    setFavorList(newFavor);
   };
   useEffect(() => {
     setTimeout(() => {
@@ -29,7 +33,7 @@ const Favorite = ({func , favorList}) => {
       </div>
     
     )
-  }else if (favorList.length == 0) {
+  }else if (favorList?.length == 0) {
     return (
       <div>
         <Nav />

@@ -1,8 +1,11 @@
 import React, { useState } from 'react'
 import Card from "./Card"
 import data from "../data"
+import { useContext } from 'react'
+import MainContex from '../Context/MainContex'
 
-const AllProduct = ({func,favorList,basket,setBasket}) => {
+const AllProduct = () => {
+  const {favorList,setFavorList,basket,setBasket}=useContext(MainContex)
     // const [input,setİnput]=useState()
     // const [searchData,setSearchData]=useState([])
     // const [searchActive,setSearchActive]=useState(false)
@@ -19,7 +22,7 @@ const AllProduct = ({func,favorList,basket,setBasket}) => {
             <button className='bg-slate-400 px-4 uppercase rounded-md text-slate-800 font-bold shadow-md shadow-slate-200 active:scale-95' onClick={handleSearch}>ara</button>
         </div> */}
         <div className='flex flex-wrap px-4 bg-orange-200'>
-        {data.map((item,index)=> <Card  item={item} key={index} func = {func} favorList={favorList} basket={basket} setBasket={setBasket}/>)}
+        {data.map((item,index)=> <Card  item={item} key={index} setFavorList = {setFavorList} favorList={favorList} basket={basket} setBasket={setBasket}/>)}
     </div>
     </div>
     

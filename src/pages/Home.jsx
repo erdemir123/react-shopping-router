@@ -6,7 +6,7 @@ import Pars from "../asset/images/pars.png";
 import Loading from "../asset/images/loading.gif";
 import İndirim from "../asset/images/indirim.jpg";
 
-const Home = ({basket,setBasket}) => {
+const Home = () => {
   const [load, setLoad] = useState(true);
   const navigate = useNavigate();
   useEffect(() => {
@@ -25,7 +25,7 @@ const Home = ({basket,setBasket}) => {
   } else {
     return (
       <div>
-        <Nav basket={basket} setBasket={setBasket}/>
+        <Nav />
         <div className="bg-slate-400  py-4 flex justify-between items-center shadow-md shadow-slate-300 md:px-14">
           <button
             className="bg-slate-500 py-1 px-4 rounded-lg text-lg text-white font-bold active:scale-95"

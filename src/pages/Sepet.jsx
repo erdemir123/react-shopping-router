@@ -4,8 +4,12 @@ import Pars from "../asset/images/pars.png";
 import Loading from "../asset/images/loading.gif";
 import { AiFillCloseCircle } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import mainContex from "../Context/MainContex";
 
-const Sepet = ({ basket, setBasket }) => {
+const Sepet = () => {
+  const { setBasket, basket } = useContext(mainContex)
+  console.log(basket)
   const navigate = useNavigate;
   const [load, setLoad] = useState(true);
   useEffect(() => {
@@ -17,7 +21,7 @@ const Sepet = ({ basket, setBasket }) => {
   const total = basket.map((item) => item.price * item.amount);
   const sumtotal = total.reduce((acc, arr) => acc + arr, 0);
   const deleteBasket = (item) => {
-    const newBasket = basket.filter((product) => product.id !== item);
+    const newBasket = basket?.filter((product) => product.id !== item);
     localStorage.setItem("basketList", JSON.stringify(newBasket));
     setBasket(newBasket);
   };
@@ -41,11 +45,10 @@ const Sepet = ({ basket, setBasket }) => {
         </p>
         <p className="text-center font-bold text-orange-600 text-2xl  mt-20 ">
           Eklemek için geri dön😊
-        </p>        
+        </p>
         <div className="fixed w-full bottom-0 bg-slate-500 text-2xl font-bold text-slate-900 text-end py-5 pr-5 ">
           total : {sumtotal}
         </div>
-        
       </div>
     );
   } else {
@@ -72,16 +75,13 @@ const Sepet = ({ basket, setBasket }) => {
                     onClick={() => deleteBasket(item.id)}
                   />
                 </div>
-                
               </div>
-              
             );
           })}
           <div className="fixed w-full bottom-0 bg-slate-500 text-2xl font-bold text-slate-900 text-end py-5 pr-5 ">
             total : {sumtotal}
           </div>
         </div>
-        
       </div>
     );
   }

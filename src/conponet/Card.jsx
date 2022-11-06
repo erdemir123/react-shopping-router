@@ -5,20 +5,22 @@ import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const Card = ({ item, favorList, func, setBasket, basket }) => {
+const Card = ({ item, favorList, setFavorList, setBasket, basket }) => {
   const navigate = useNavigate();
+  const total =basket.filter((product)=>(product.id == item.id))
+  console.log()
 
   const favorite = () => {
-    func([...favorList.filter((product) => product.id !== item.id), item]);
+    setFavorList([...favorList.filter((product) => product.id !== item.id), item]);
     localStorage.setItem("favoriteList", JSON.stringify(favorList));
   };
   const notify = () => toast.warning("Ürün Listeye Eklendi 🧺");
   const addBasket = () => {
 
-    const amountItem = basket.find( (basketProduct) => basketProduct.id === item.id)
+    const amountItem = basket?.find( (basketProduct) => basketProduct.id === item.id)
     if(amountItem){
         amountItem.amount+=1
-        setBasket([...basket.filter(product => product.id !== item.id),amountItem])
+        setBasket([...basket?.filter(product => product.id !== item.id),amountItem])
         localStorage.setItem("basketList", JSON.stringify(basket))
     }
     else{
@@ -48,13 +50,14 @@ const Card = ({ item, favorList, func, setBasket, basket }) => {
       <p className="text-center my-2 text-md font-bold text-slate-600">
         {item.name}
       </p>
-      <div className="absolute bottom-5 flex gap-8">
+      <div className="absolute bottom-5 flex gap-6">
         <button
           className="py-1 px-2 bg-slate-400 rounded-lg shadow-sm shadow-slate-200  text-slate-800  font-bold text-md active:scale-95"
           onClick={() => navigate("/details", { state: item })}
         >
           İncele
         </button>
+        <span className="py-1 px-6 bg-slate-400 rounded-lg shadow-sm shadow-slate-200  text-slate-800  font-bold text-md active:scale-95">{total[0]?.amount ? total[0]?.amount : "0"}</span>
         <button
           className="py-1 px-2 bg-slate-400 rounded-lg shadow-sm shadow-slate-200 text-slate-800  font-bold text-md active:scale-95"
           onClick={addBasket}

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Logo from "../asset/images/logo.png";
 import Pars from "../asset/images/pars.png";
@@ -6,17 +6,23 @@ import Valid from "../asset/images/valid.png";
 import { FaShoppingCart } from "react-icons/fa";
 import { RiHeartAddLine } from "react-icons/ri";
 import { AiFillCloseCircle } from "react-icons/ai";
+import MainContex from "../Context/MainContex";
 
 const Nav = () => {
   const navigate = useNavigate();
+  const {basket,favorList} =useContext(MainContex)
   const [pbasket, setPbasket] = useState(false);
   const [pfavor, setPfavor] = useState(false);
   const [modal, setModal] = useState(false);
   const [email, setEmail] = useState("");
   const [user, setUser] = useState([]);
   const [login, setLogin] = useState(false);
-  // const basket = JSON.parse(localStorage.getItem("basketList"));
+  let sumTotal = 0
+  basket?.map((item)=>sumTotal+=item.amount)
+
+  
   const aboutClick = () => {
+    
     if (!login) {
       user.push(email);
       localStorage.setItem("data", JSON.stringify(user));
@@ -61,11 +67,12 @@ const Nav = () => {
       </div>
 
       <div className="flex items-center gap-5 relative">
-        {/* <p className="w-6 h-6 bg-slate-400 rounded-full absolute text-xs left-4 bottom-3 flex justify-center items-center text-white">
-        {basket?.length == null && <p>boş</p>}
-          {(basket?.length == 0) && <p>0</p>}
-          {(basket?.length > 0) && <p>{basket?.length }</p>}
-        </p> */}
+        <p className="w-6 h-6 bg-slate-400 rounded-full absolute text-xs left-4 bottom-3 flex justify-center items-center text-white">
+        {sumTotal ? sumTotal : "0"}
+        </p>
+        <p className="w-6 h-6 bg-slate-400 rounded-full absolute text-xs -right-4 bottom-2.5 flex justify-center items-center text-white">
+        {favorList.length ? favorList.length : "0"}
+        </p>
         <FaShoppingCart
           className="text-3xl text-red-800"
           onClick={() => setModal(!modal)}
