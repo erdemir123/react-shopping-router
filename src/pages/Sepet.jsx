@@ -58,6 +58,7 @@ const Sepet = () => {
     return (
       <div className="bg-orange-200 h-full ">
         <Nav />
+        <div className="h-[97px]"></div>
         <div className="flex flex-wrap justify-center items-center gap-5 mt-5 py-20">
           {basket.map((item) => {
             return (

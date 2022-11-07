@@ -25,13 +25,14 @@ function App() {
   useEffect(() => {
     userObserver(setCurrentUser);
   }, []);
+  console.log(currentUser)
   return (
     <div>
       <MainContex.Provider
         value={{ favorList, setFavorList, basket, setBasket, currentUser }}
       >
         <Routes>
-          
+        
           <Route index element={<Login />} />
           <Route path="register" element={<Register />} />
           <Route path="" element={<PrivateRouter/>}>

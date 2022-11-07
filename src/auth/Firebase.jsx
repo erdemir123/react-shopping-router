@@ -60,7 +60,7 @@ export const userObserver = (setCurrentUser) => {
 export const logOut = (navigate) => {
   signOut(auth);
   toastWarnNotify("logged out successfully");
-  navigate("/login")
+  navigate("login")
 };
 
 export const signIn = async (email, password, navigate) => {

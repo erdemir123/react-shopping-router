@@ -4,7 +4,7 @@ import {Navigate,Outlet} from "react-router-dom"
 import MainContex from '../Context/MainContex'
 const PrivateRouter = () => {
     const {currentUser}=useContext(MainContex)
-    console.log(currentUser)
+    
   return (
     currentUser ? <Outlet /> : <Navigate to="/" />
   )

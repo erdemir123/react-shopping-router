@@ -36,33 +36,33 @@ const Home = () => {
       <div>
         <Nav />
         <div className="h-[97px]"></div>
-        <div className="flex flex-col mx-auto bg-slate-400 md:bg-slate-400  md:py-4 md:flex md:flex-row md:justify-between md:items-center md:shadow-md md:shadow-slate-300 md:px-14">
+        <div className="flex flex-col mx-auto bg-slate-400  md:bg-slate-400  md:py-6 md:flex md:flex-row md:justify-between md:items-center md:shadow-md md:shadow-slate-300 md:px-14 ">
           <button
-            className="bg-slate-500 py-1 px-4  text-lg text-white font-bold active:scale-95 "
+            className="bg-slate-500 py-2 px-4  text-lg text-white font-bold active:scale-95 hover:bg-slate-400 md:rounded-md md:hover-bg-slate-600"
             onClick={() => navigate("")}
           >
             Tüm Ürünler
           </button>
           <button
-            className="bg-slate-500 py-1 px-4  text-lg text-white font-bold active:scale-95"
+            className="bg-slate-500 py-2 px-4  text-lg text-white font-bold active:scale-95  hover:bg-slate-400 md:rounded-md md:hover-bg-slate-600"
             onClick={() => navigate("electronic")}
           >
             Elektronik
           </button>
           <button
-            className="bg-slate-500 py-1 px-4  text-lg text-white font-bold active:scale-95"
+            className="bg-slate-500 py-2 px-4  text-lg text-white font-bold active:scale-95  hover:bg-slate-400 md:rounded-md md:hover-bg-slate-600"
             onClick={() => navigate("laptop")}
           >
             Laptop
           </button>
           <button
-            className="bg-slate-500 py-1 px-4  text-lg text-white font-bold active:scale-95"
+            className="bg-slate-500 py-2 px-4  text-lg text-white font-bold active:scale-95  hover:bg-slate-400 md:rounded-md md:hover-bg-slate-600"
             onClick={() => navigate("accessory")}
           >
             Aksesuar
           </button>
           <button
-            className="bg-slate-500 py-1 px-4  text-lg text-white font-bold active:scale-95"
+            className="bg-slate-500 py-1 px-4  text-lg text-white font-bold active:scale-95  hover:bg-slate-400 md:rounded-md md:hover-bg-slate-600"
             onClick={() => navigate("phone")}
           >
             Telefon

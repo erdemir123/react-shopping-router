@@ -1,11 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Pars from "../asset/images/pars.png";
 import { signIn, signUpProvider } from "../auth/Firebase";
+import 'react-toastify/dist/ReactToastify.css'
+import { ToastContainer } from 'react-toastify'
+import MainContex from "../Context/MainContex";
+import { useEffect } from "react";
 
 const Login = () => {
   const [login, setLogin] = useState({email:"",password:""});
+  const {currentUser}=useContext(MainContex)
   const navigate = useNavigate();
   const handleLogin = () => {
     console.log(login);
@@ -14,8 +19,14 @@ const Login = () => {
   const handleGoogle=()=>{
     signUpProvider(navigate)
   }
- 
-
+  useEffect(()=>{
+    setTimeout(()=>{
+      if(currentUser){
+        navigate("/home")
+        console.log("sadık");
+      }
+    },5)
+  },[currentUser])
   return (
     <>
       <section className="h-screen bg-orange-400">
@@ -85,7 +96,7 @@ const Login = () => {
                       Remember me
                     </label>
                   </div>
-                  <span href="#!" className="text-gray-800">
+                  <span  className="text-gray-800">
                     Forgot password?
                   </span>
                 </div>
@@ -100,7 +111,6 @@ const Login = () => {
                   <p className="text-md font-semibold mt-2 pt-1 mb-0  ">
                     Don't have an account?
                     <span
-                      href="#!"
                       className="text-red-600 hover:text-red-700 focus:text-red-700 transition duration-200 ease-in-out text-md ml-2 underline"
                       onClick={() => navigate("/register")}
                     >
@@ -112,6 +122,7 @@ const Login = () => {
             </div>
           </div>
         </div>
+        <ToastContainer />
       </section>
     </>
   );
