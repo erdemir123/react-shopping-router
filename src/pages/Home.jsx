@@ -12,7 +12,7 @@ const Home = () => {
   useEffect(() => {
     setTimeout(() => {
       setLoad(false);
-    }, 2000);
+    },2000);
   }, []);
   if (load) {
     return (

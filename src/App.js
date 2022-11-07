@@ -25,7 +25,6 @@ function App() {
   useEffect(() => {
     userObserver(setCurrentUser);
   }, [])
-  console.log(currentUser);
   return (
     <div>
       <MainContex.Provider

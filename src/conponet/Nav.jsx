@@ -20,6 +20,7 @@ const Nav = () => {
   const [login, setLogin] = useState(false);
   let sumTotal = 0
   basket?.map((item)=>sumTotal+=item.amount)
+  console.log(basket.length)
 
   
   const aboutClick = () => {

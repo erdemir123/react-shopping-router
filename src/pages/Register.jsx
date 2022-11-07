@@ -20,7 +20,7 @@ const Register = () => {
     const password = register.password;
     createUser(email, password, navigate, displayName);
     console.log(email, password, displayName);
-    console.log("sadık")
+    console.log(register.p)
   };
 
   return (
@@ -35,7 +35,7 @@ const Register = () => {
               <img src={Pars} className="w-full" alt="Pars"/>
             </div>
             <div className="xl:ml-20 xl:w-5/12 lg:w-5/12 md:w-8/12 mb-12 md:mb-0">
-              <form >
+              {/* <form onSubmit={createUserRegister}> */}
                 <div className="flex items-center my-4 before:flex-1 before:border-t before:border-orange-900 before:mt-0.5 after:flex-1 after:border-t after:border-orange-900 after:mt-0.5 ">
                   <p className="text-center mx-4 mb-0 text-slate-600 font-bold">
                     REGİSTER
@@ -44,7 +44,7 @@ const Register = () => {
                 {/* Name input */}
                 <div className="mb-6">
                   <input
-                    type="password"
+                    type="text"
                     className="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                     value={register.name}
                     onChange={(e) =>
@@ -68,9 +68,13 @@ const Register = () => {
                 {/* Password input */}
                 <div className="mb-6">
                   <input
-                    type="password"
+                    type="text"
                     className="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                     placeholder="Password"
+                    value={register.password}
+                      onChange={(e) =>
+                        setRegister({ ...register, password: e.target.value })
+                      }
                   />
                 </div>
                 <div className="flex justify-center items-center mb-6">
@@ -78,10 +82,7 @@ const Register = () => {
                     <input
                       type="checkbox"
                       className="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
-                      value={register.password}
-                      onChange={(e) =>
-                        setRegister({ ...register, password: e.target.value })
-                      }
+                      
                       id="exampleCheck2"
                     />
                     <label
@@ -101,7 +102,7 @@ const Register = () => {
                     Register
                   </button>
                 </div>
-              </form>
+              {/* </form> */}
             </div>
           </div>
         </div>
