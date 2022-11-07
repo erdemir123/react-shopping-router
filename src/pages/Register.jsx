@@ -19,8 +19,7 @@ const Register = () => {
     const email = register.email;
     const password = register.password;
     createUser(email, password, navigate, displayName);
-    console.log(email, password, displayName);
-    console.log(register.p)
+    
   };
 
   return (
@@ -28,13 +27,13 @@ const Register = () => {
       <section className="h-screen bg-orange-400">
         <div className="px-6 h-full text-gray-800">
           <div className="flex xl:justify-center lg:justify-between justify-center items-center flex-wrap h-full g-6">
-            <div className="grow-0 shrink-1 md:shrink-0 basis-auto xl:w-6/12 lg:w-6/12 md:w-9/12 mb-12 md:mb-0">
+            <div className="grow-0 shrink-1 md:shrink-0 basis-auto xl:w-6/12 lg:w-6/12 md:w-9/12 ">
               <p className="text-center font-bold text-4xl text-slate-600">
                 PARS BİLİŞİM
               </p>
               <img src={Pars} className="w-full" alt="Pars"/>
             </div>
-            <div className="xl:ml-20 xl:w-5/12 lg:w-5/12 md:w-8/12 mb-12 md:mb-0">
+            <div className="xl:ml-20 xl:w-5/12 lg:w-5/12 md:w-8/12 ">
               {/* <form onSubmit={createUserRegister}> */}
                 <div className="flex items-center my-4 before:flex-1 before:border-t before:border-orange-900 before:mt-0.5 after:flex-1 after:border-t after:border-orange-900 after:mt-0.5 ">
                   <p className="text-center mx-4 mb-0 text-slate-600 font-bold">

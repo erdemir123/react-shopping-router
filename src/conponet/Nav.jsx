@@ -12,8 +12,6 @@ const Nav = () => {
   const { basket, favorList, currentUser } = useContext(MainContex);
   let sumTotal = 0;
   basket?.map((item) => (sumTotal += item.amount));
-
-  console.log(currentUser?.photoURL);
   return (
     <div className="bg-orange-300  fixed top-0 w-full z-50 md:bg-orange-300 md:flex md:justify-between md:px-10 md:items-center md:py-4 md:font-bold md:text-slate-800 md:fixed md:top-0 md:w-full md:z-50 md:shadow-sm md:shadow-orange-500">
       <div className="text-lg flex items-center gap-1 justify-center">

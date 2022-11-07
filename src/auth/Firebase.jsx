@@ -70,7 +70,7 @@ export const signIn = async (email, password, navigate) => {
       email,
       password
     );
-    navigate("home");
+    navigate("login");
      toastSuccessNotify("Login successfully!")
   } catch (error) {
     toastErrorNotify(error.message);
