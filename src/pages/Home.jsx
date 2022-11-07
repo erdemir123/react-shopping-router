@@ -23,8 +23,8 @@ const Home = () => {
   }, []);
   if (load) {
     return (
-      <div className="flex flex-col w-full h-[100vh] bg-orange-400 justify-center items-center ">
-        <p className="text-6xl font-bold text-slate-800 font-serif">
+      <div className="flex flex-col w-full h-[100vh] bg-orange-400 justify-center items-center text-center">
+        <p className="text-6xl font-bold text-slate-800 font-serif text-center">
           PARS BİLİŞİM
         </p>
         <img src={Pars} alt="" className="w-96" />
