@@ -37,6 +37,7 @@ const Favorite = () => {
     return (
       <div>
         <Nav />
+        <div className="h-[97px]"></div>
         <p className="text-center font-bold text-orange-600 text-2xl  mt-20 "> Favori Listesine Eklenen ürün Bulunmamaktadır</p>
         <p className="text-center font-bold text-orange-600 text-2xl  mt-20 ">Eklemek için geri dön😊</p>
         <button className='bg-orange-400 mx-auto block  mt-8 py-1 px-2 text-xl text-slate-600 font-bold rounded-md active:scale-95' onClick={()=>navigate("/home")}>Go Home</button>

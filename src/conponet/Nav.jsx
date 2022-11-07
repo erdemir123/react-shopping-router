@@ -17,7 +17,7 @@ const Nav = () => {
   basket?.map((item)=>sumTotal+=item.amount)
   console.log(basket.length)
   return (
-    <div className="bg-orange-300 flex justify-between px-10 items-center py-4 font-bold text-slate-800 ">
+    <div className="bg-orange-300 flex justify-between px-10 items-center py-4 font-bold text-slate-800 fixed top-0 w-full z-50 shadow-sm shadow-orange-500">
       <img
         src={Logo}
         alt=""

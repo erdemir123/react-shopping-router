@@ -9,6 +9,7 @@ const navigate =useNavigate()
   return (
     <div >
         <Nav />
+        <div className="h-[97px]"></div>
     <div className='bg-orange-400 flex flex-col justify-center items-center w-[350px] h-[450px] border-2 border-slate-400 mt-10 relative shadow-md shadow-slate-400 rounded-md mx-auto'>
     <img src={state.url} alt=""  />
       <div className='font-bold text-2xl text-slate-900 my-2'>{state.price} TL</div>

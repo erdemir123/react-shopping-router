@@ -5,8 +5,11 @@ import Loading from "../asset/images/loading.gif";
 import { AiFillCloseCircle } from "react-icons/ai";
 import { useContext } from "react";
 import mainContex from "../Context/MainContex";
+import { useNavigate } from "react-router-dom";
+
 
 const Sepet = () => {
+  const navigate= useNavigate()
   const { setBasket, basket } = useContext(mainContex)
   console.log(basket)
   const [load, setLoad] = useState(true);
@@ -37,6 +40,7 @@ const Sepet = () => {
     return (
       <div>
         <Nav />
+        <div className="h-[97px]"></div>
         <p className="text-center font-bold text-orange-600 text-2xl  mt-10 ">
           {" "}
           Sepette ürün Bulunmamaktadır
@@ -44,6 +48,7 @@ const Sepet = () => {
         <p className="text-center font-bold text-orange-600 text-2xl  mt-20 ">
           Eklemek için geri dön😊
         </p>
+        <button className='bg-orange-400 mx-auto block  mt-8 py-1 px-2 text-xl text-slate-600 font-bold rounded-md active:scale-95' onClick={()=>navigate("/home")}>Go Home</button>
         <div className="fixed w-full bottom-0 bg-slate-500 text-2xl font-bold text-slate-900 text-end py-5 pr-5 ">
           total : {sumtotal}
         </div>

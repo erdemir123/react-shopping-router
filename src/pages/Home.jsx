@@ -5,6 +5,13 @@ import { useNavigate } from "react-router-dom";
 import Pars from "../asset/images/pars.png";
 import Loading from "../asset/images/loading.gif";
 import İndirim from "../asset/images/indirim.jpg";
+// REACT_APP_apiKey=
+// REACT_APP_authDomain=
+// REACT_APP_projectId=
+// REACT_APP_storageBucket=
+// REACT_APP_messagingSenderId=
+// REACT_APP_appId=
+// REACT_APP_TMDB_KEY=
 
 const Home = () => {
   const [load, setLoad] = useState(true);
@@ -12,12 +19,14 @@ const Home = () => {
   useEffect(() => {
     setTimeout(() => {
       setLoad(false);
-    },2000);
+    }, 2000);
   }, []);
   if (load) {
     return (
-      <div className="flex flex-col w-full h-[100vh] bg-orange-400 justify-center items-center">
-        <p className="text-6xl font-bold text-slate-800 font-serif">PARS BİLİŞİM</p>
+      <div className="flex flex-col w-full h-[100vh] bg-orange-400 justify-center items-center ">
+        <p className="text-6xl font-bold text-slate-800 font-serif">
+          PARS BİLİŞİM
+        </p>
         <img src={Pars} alt="" className="w-96" />
         <img src={Loading} alt="" className="w-32" />
       </div>
@@ -26,44 +35,44 @@ const Home = () => {
     return (
       <div>
         <Nav />
-        <div className="bg-slate-400  py-4 flex justify-between items-center shadow-md shadow-slate-300 md:px-14">
+        <div className="h-[97px]"></div>
+        <div className="flex flex-col mx-auto bg-slate-400 md:bg-slate-400  md:py-4 md:flex md:flex-row md:justify-between md:items-center md:shadow-md md:shadow-slate-300 md:px-14">
           <button
-            className="bg-slate-500 py-1 px-4 rounded-lg text-lg text-white font-bold active:scale-95"
+            className="bg-slate-500 py-1 px-4  text-lg text-white font-bold active:scale-95 "
             onClick={() => navigate("")}
           >
             Tüm Ürünler
           </button>
           <button
-            className="bg-slate-500 py-1 px-4 rounded-lg text-lg text-white font-bold active:scale-95"
+            className="bg-slate-500 py-1 px-4  text-lg text-white font-bold active:scale-95"
             onClick={() => navigate("electronic")}
           >
             Elektronik
           </button>
           <button
-            className="bg-slate-500 py-1 px-4 rounded-lg text-lg text-white font-bold active:scale-95"
+            className="bg-slate-500 py-1 px-4  text-lg text-white font-bold active:scale-95"
             onClick={() => navigate("laptop")}
           >
             Laptop
           </button>
           <button
-            className="bg-slate-500 py-1 px-4 rounded-lg text-lg text-white font-bold active:scale-95"
+            className="bg-slate-500 py-1 px-4  text-lg text-white font-bold active:scale-95"
             onClick={() => navigate("accessory")}
           >
             Aksesuar
           </button>
           <button
-            className="bg-slate-500 py-1 px-4 rounded-lg text-lg text-white font-bold active:scale-95"
+            className="bg-slate-500 py-1 px-4  text-lg text-white font-bold active:scale-95"
             onClick={() => navigate("phone")}
           >
             Telefon
           </button>
         </div>
         <div className="bg-orange-200 flex justify-center">
-        <img src={İndirim} alt="" className="w-[40%] h-[200px] mt-2"/>
+          <img src={İndirim} alt="" className="w-[40%] h-[200px] mt-2" />
         </div>
-        
+
         <Outlet />
-        
       </div>
     );
   }
