@@ -21,35 +21,33 @@ import { useEffect } from "react";
 function App() {
   const [favorList, setFavorList] = useState([]);
   const [basket, setBasket] = useState([]);
-  const [currentUser, setCurrentUser] = useState("")
+  const [currentUser, setCurrentUser] = useState("");
   useEffect(() => {
     userObserver(setCurrentUser);
-  }, [])
+  }, []);
   return (
     <div>
       <MainContex.Provider
-        value={{ favorList, setFavorList, basket, setBasket,currentUser }}
+        value={{ favorList, setFavorList, basket, setBasket, currentUser }}
       >
-        
-          <Routes>
-            <Route index element={<Login />}/>
-            <Route path="register" element={<Register />}/>
-            <Route path="/home" element={<Home />}>
-              <Route index element={<AllProduct />} />
-              <Route path="electronic" element={<Electronic />} />
-              <Route path="Laptop" element={<Laptop />} />
-              <Route path="accessory" element={<Accessory />} />
-              <Route path="phone" element={<Phone />} />
-            </Route>
-
-            <Route path="sepet" element={<PrivateRouter />}>
-              <Route path="" element={<Sepet />} />
-            </Route>
-            <Route path="/details" element={<Details />} />
-            <Route path="/favorite" element={<Favorite />} />
-            <Route path="*" element={<Navigate to="" />} />
-          </Routes>
-       
+        <Routes>
+          
+          <Route index element={<Login />} />
+          <Route path="register" element={<Register />} />
+          <Route path="" element={<PrivateRouter/>}>
+          <Route path="/home" element={<Home />}>
+            <Route index element={<AllProduct />} />
+            <Route path="electronic" element={<Electronic />} />
+            <Route path="Laptop" element={<Laptop />} />
+            <Route path="accessory" element={<Accessory />} />
+            <Route path="phone" element={<Phone />} />
+          </Route>
+          <Route path="sepet" element={<Sepet />} />
+          <Route path="/details" element={<Details />} />
+          <Route path="/favorite" element={<Favorite />} />
+          <Route path="*" element={<Navigate to="" />} />
+          </Route>
+        </Routes>
       </MainContex.Provider>
     </div>
   );

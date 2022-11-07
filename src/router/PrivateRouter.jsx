@@ -1,11 +1,12 @@
 import React from 'react'
+import { useContext } from 'react'
 import {Navigate,Outlet} from "react-router-dom"
+import MainContex from '../Context/MainContex'
 const PrivateRouter = () => {
-    // const {state} = useLocation()
-    const user =JSON.parse(localStorage.getItem("data")) 
-  //  const person = user.filter((item)=>item===state)
+    const {currentUser}=useContext(MainContex)
+    console.log(currentUser)
   return (
-    user ? <Outlet /> : <Navigate to="/" />
+    currentUser ? <Outlet /> : <Navigate to="/" />
   )
 }
 

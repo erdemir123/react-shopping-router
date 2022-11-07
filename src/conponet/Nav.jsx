@@ -2,12 +2,10 @@ import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Logo from "../asset/images/logo.png";
 import Pars from "../asset/images/pars.png";
-import Valid from "../asset/images/valid.png";
 import { FaShoppingCart } from "react-icons/fa";
 import { RiHeartAddLine } from "react-icons/ri";
 import { AiFillCloseCircle } from "react-icons/ai";
 import MainContex from "../Context/MainContex";
-import { logOut } from "../auth/Firebase";
 
 const Nav = () => {
   const navigate = useNavigate();
@@ -15,34 +13,16 @@ const Nav = () => {
   const [pbasket, setPbasket] = useState(false);
   const [pfavor, setPfavor] = useState(false);
   const [modal, setModal] = useState(false);
-  const [email, setEmail] = useState("");
-  const [user, setUser] = useState([]);
-  const [login, setLogin] = useState(false);
   let sumTotal = 0
   basket?.map((item)=>sumTotal+=item.amount)
   console.log(basket.length)
-
-  
-  const aboutClick = () => {
-    
-    if (!login) {
-      user.push(email);
-      localStorage.setItem("data", JSON.stringify(user));
-      alert("kayıt yapıldı");
-      setLogin(true);
-    }
-    if (login) {
-      navigate("/sepet", { state: email });
-    }
-  };
   return (
     <div className="bg-orange-300 flex justify-between px-10 items-center py-4 font-bold text-slate-800 ">
-      <button onClick={()=>logOut(navigate)}>sadık</button>
       <img
         src={Logo}
         alt=""
         className="w-[100px]  h-[60px]"
-        onClick={() => navigate("home")}
+        onClick={() => navigate("/home")}
       />
       <div className="text-lg flex items-center gap-1">
         <p className="mt-4 text-slate-600">PARS BİLİŞİM</p>
@@ -78,7 +58,7 @@ const Nav = () => {
         </p>
         <FaShoppingCart
           className="text-3xl text-red-800"
-          onClick={() => setModal(!modal)}
+          onClick={() => navigate("/sepet")}
           onMouseOver={() => setPbasket(true)}
           onMouseLeave={() => setPbasket(false)}
         />
@@ -100,29 +80,6 @@ const Nav = () => {
           className="absolute top-2 right-2"
           onClick={() => setModal(!modal)}
         />
-        <p>SEPETE GİTMEK İÇİN GİRİŞ YAPINIZ</p>
-        <input
-          type="text"
-          className="rounded-md indent-2 py-4"
-          onChange={(e) => setEmail(e.target.value)}
-          placeholder="Email giriniz ..."
-        />
-        <div className="flex justify-center gap-2 py-5 px-10">
-          <button
-            className="bg-slate-500 rounded-lg px-2 py-1 text-lg text-white font-bold active:scale-95 "
-            onClick={() => setLogin(!login)}
-          >
-            {login ? "üye kaydı" : "üye girişi"}
-          </button>
-          <button
-            className="bg-slate-500 rounded-lg px-2 py-1 text-lg text-white font-bold active:scale-95"
-            onClick={() => aboutClick()}
-          >
-            {login ? "Login" : "Register"}
-          </button>
-        </div>
-        <img src={Valid} alt="" className="w-24 mx-auto " />
-        <span className={login ?"opacity-0 duration-700" : "w-[6px] h-12 rounded-tr-xl rounded-bl-xl bg-red-600 absolute bottom-14 right-[160px] -rotate-[45deg] duration-700"  }></span>
       </div>
     </div>
   );
