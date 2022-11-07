@@ -6,9 +6,13 @@ import { AiFillCloseCircle } from "react-icons/ai";
 import { useContext } from "react";
 import mainContex from "../Context/MainContex";
 import { useNavigate } from "react-router-dom";
-import 'react-toastify/dist/ReactToastify.css'
-import { ToastContainer } from 'react-toastify'
-import { toastSuccessNotify, toastErrorNotify, toastWarnNotify } from "../helper/Toastfy.jsx"
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from "react-toastify";
+import {
+  toastSuccessNotify,
+  toastErrorNotify,
+  toastWarnNotify,
+} from "../helper/Toastfy.jsx";
 const Sepet = () => {
   const navigate = useNavigate();
   const { setBasket, basket } = useContext(mainContex);
@@ -27,20 +31,31 @@ const Sepet = () => {
     setBasket(newBasket);
   };
   const amountDesc = (item) => {
-    const basketItem = basket?.find( (basketProduct) => basketProduct.id === item.id)
-      basketItem.amount+=1
-        setBasket([basketItem,...basket?.filter(product => product.id !== item.id)])
-        toastSuccessNotify(`Sepetteki ${item.name} miktarı artırıldı`)
+    const basketItem = basket?.find(
+      (basketProduct) => basketProduct.id === item.id
+    );
+    basketItem.amount += 1;
+    setBasket([
+      basketItem,
+      ...basket?.filter((product) => product.id !== item.id),
+    ]);
+    toastSuccessNotify(`Sepetteki ${item.name} miktarı artırıldı`);
   };
   const amountInc = (item) => {
-    const basketItem = basket?.find( (basketProduct) => basketProduct.id === item.id)
-    basketItem.amount-=1
-        setBasket([basketItem,...basket?.filter(product => product.id !== item.id)])
-        toastSuccessNotify(`Sepetteki ${item.name} miktarı azaltıldı`)
-      if(basketItem.amount==0){
-        setBasket([...basket?.filter(product => product.id !== item.id)])
-        toastErrorNotify("Ürün Sepetten Başarı İle Kaldırıldı")
-      }
+    const basketItem = basket?.find(
+      (basketProduct) => basketProduct.id === item.id
+    );
+
+    basketItem.amount -= 1;
+    setBasket([
+      basketItem,
+      ...basket?.filter((product) => product.id !== item.id),
+    ]);
+    toastSuccessNotify(`Sepetteki ${item.name} miktarı azaltıldı`);
+    if (basketItem.amount == 0) {
+      setBasket([...basket?.filter((product) => product.id !== item.id)]);
+      toastErrorNotify("Ürün Sepetten Başarı İle Kaldırıldı");
+    }
   };
   if (load) {
     return (
@@ -81,28 +96,43 @@ const Sepet = () => {
       <div className="bg-orange-200 h-full ">
         <Nav />
         <div className="h-[97px]"></div>
-        <div
-          className="flex flex-wrap justify-center items-center gap-5 mt-5 py-20"
-          
-        >
-          {basket.map((item,index) => {
+        <div className="flex flex-wrap justify-center items-center gap-5 mt-5 py-20">
+          {basket.map((item, index) => {
             return (
-              <div className="flex  flex-col w-80 h-96 justify-center items-center bg-orange-400 relative rounded-lg shadow-sm shadow-slate-500" key={index}>
+              <div
+                className="flex  flex-col w-80 h-96 justify-center items-center bg-orange-400 relative rounded-lg shadow-sm shadow-slate-500"
+                key={index}
+              >
                 <img src={item.url} alt="" className="w-48" />
                 <div className="text-center text-slate-800 font-bold font-serif text-lg my-2 ">
                   {item.name}
                 </div>
                 <div className="flex flex-col justify-center items-center">
-                  <div className="text-center text-slate-800 font-bold  text-lg my-2 flex">
-                  <button className="bg-slate-500 py-2 px-4  text-lg text-white font-bold active:scale-95  hover:bg-slate-400 md:rounded-md md:hover-bg-slate-600"  onClick={() => amountDesc(item)}><svg width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="m20 12l-1.41-1.41L13 16.17V4h-2v12.17l-5.58-5.59L4 12l8 8l8-8z"></path></svg></button>
-                    <p>Miktar :{item.amount}</p>
-                    <button className="bg-slate-500 py-2 px-4  text-lg text-white font-bold active:scale-95  hover:bg-slate-400 md:rounded-md md:hover-bg-slate-600"  onClick={() => amountInc(item)}><svg width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="m20 12l-1.41-1.41L13 16.17V4h-2v12.17l-5.58-5.59L4 12l8 8l8-8z"></path></svg></button>
+                  <div className="text-center text-slate-800 font-bold  text-lg my-2 flex bg-slate-500 rounded-md py-2 gap-2">
+                    <button
+                      className="bg-slate-500 py-2 px-4  text-lg text-white font-bold active:scale-95  md:rounded-md rounded-full flex justify-center w-15 h-10 items-center"
+                      onClick={() => amountDesc(item)}
+                    >
+                      <svg width="1.8em" height="1.5em" viewBox="0 0 24 24"><path fill="orange" d="m4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8l-8 8z"></path></svg>
+                    </button>
+                    <p className="mt-2 text-slate-300">Miktar : <span className="text-orange-300">{item.amount}</span></p>
+                    <button
+                      className="bg-slate-500 py-2 px-4  text-lg text-white font-bold active:scale-95  md:rounded-md rounded-full flex justify-center w-15 h-10 items-center"
+                      onClick={() => amountInc(item)}
+                    >
+                      <svg width="1.8em" height="1.5em" viewBox="0 0 24 24">
+                        <path
+                          fill="orange"
+                          d="m20 12l-1.41-1.41L13 16.17V4h-2v12.17l-5.58-5.59L4 12l8 8l8-8z"
+                        ></path>
+                      </svg>
+                    </button>
                   </div>
                   <div className="text-center text-slate-800 font-bold  text-lg my-2">
                     Birim Fiyat :{item.price}
                   </div>
                   <div className="text-center text-slate-800 font-bold  text-lg my-2">
-                    Total Fiyat :{item.price *item.amount}
+                    Total Fiyat :{item.price * item.amount}
                   </div>
                   <AiFillCloseCircle
                     className="absolute top-2 right-2 text-lg text-slate-300"

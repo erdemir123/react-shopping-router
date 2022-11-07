@@ -24,7 +24,7 @@ const Nav = () => {
         <p className="mt-4 text-slate-600 font-bold ">PARS BİLİŞİM</p>
       </div>
 
-      <div className="flex justify-around items-center md:flex md:gap-4 md:items-center">
+      <div className="flex justify-center gap-3 items-center md:flex md:gap-4 md:items-center">
         <img
           src={currentUser?.photoURL && Unknown}
           alt=""
@@ -39,25 +39,25 @@ const Nav = () => {
         >
           LogOut
         </button>
-        <FaShoppingCart
-          className="text-3xl text-red-800"
-          onClick={() => navigate("/sepet")}
-          
-        >
-          <p className="w-6 h-6 bg-slate-400 rounded-full absolute text-xs right-10 bottom-3.5 flex justify-center items-center text-white">
+        <div className="relative">
+          <FaShoppingCart
+            className="text-3xl text-red-800"
+            onClick={() => navigate("/sepet")}
+          ></FaShoppingCart>
+          <p className="w-6 h-6 bg-slate-400 rounded-full absolute text-xs -right-2 -top-2 flex justify-center items-center text-white">
             {sumTotal ? sumTotal : "0"}
           </p>
-        </FaShoppingCart>
+        </div>
 
-        <RiHeartAddLine
-          className="text-3xl text-red-600"
-          onClick={() => navigate("/favorite")}
-          
-        >
+        <div className="relative ">
+          <RiHeartAddLine
+            className="text-3xl text-red-600"
+            onClick={() => navigate("/favorite")}
+          ></RiHeartAddLine>
           <p className="w-6 h-6 bg-slate-400 rounded-full absolute text-xs -right-4 bottom-3.5 flex justify-center items-center text-white">
-            {favorList.length ? favorList.length : "0"}sda
+            {favorList.length ? favorList.length : "0"}
           </p>
-        </RiHeartAddLine>
+        </div>
       </div>
     </div>
   );
