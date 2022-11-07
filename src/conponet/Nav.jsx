@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Logo from "../asset/images/logo.png";
 import Pars from "../asset/images/pars.png";
@@ -7,6 +7,7 @@ import { FaShoppingCart } from "react-icons/fa";
 import { RiHeartAddLine } from "react-icons/ri";
 import { AiFillCloseCircle } from "react-icons/ai";
 import MainContex from "../Context/MainContex";
+import { logOut } from "../auth/Firebase";
 
 const Nav = () => {
   const navigate = useNavigate();
@@ -35,6 +36,7 @@ const Nav = () => {
   };
   return (
     <div className="bg-orange-300 flex justify-between px-10 items-center py-4 font-bold text-slate-800 ">
+      <button onClick={()=>logOut(navigate)}>sadık</button>
       <img
         src={Logo}
         alt=""

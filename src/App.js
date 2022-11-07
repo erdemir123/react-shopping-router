@@ -12,19 +12,29 @@ import Favorite from "./pages/Favorite";
 import { useState } from "react";
 import PrivateRouter from "./router/PrivateRouter";
 import MainContex from "./Context/MainContex";
-import { BrowserRouter as Router } from "react-router-dom";
+
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import { userObserver } from "./auth/Firebase";
+import { useEffect } from "react";
 
 function App() {
   const [favorList, setFavorList] = useState([]);
   const [basket, setBasket] = useState([]);
-
+  const [currentUser, setCurrentUser] = useState("")
+  useEffect(() => {
+    userObserver(setCurrentUser);
+  }, [])
+  console.log(currentUser);
   return (
     <div>
       <MainContex.Provider
-        value={{ favorList, setFavorList, basket, setBasket }}
+        value={{ favorList, setFavorList, basket, setBasket,currentUser }}
       >
-        <Router>
+        
           <Routes>
+            <Route index element={<Login />}/>
+            <Route path="register" element={<Register />}/>
             <Route path="/home" element={<Home />}>
               <Route index element={<AllProduct />} />
               <Route path="electronic" element={<Electronic />} />
@@ -40,7 +50,7 @@ function App() {
             <Route path="/favorite" element={<Favorite />} />
             <Route path="*" element={<Navigate to="" />} />
           </Routes>
-        </Router>
+       
       </MainContex.Provider>
     </div>
   );

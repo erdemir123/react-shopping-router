@@ -3,14 +3,12 @@ import Nav from "../conponet/Nav";
 import Pars from "../asset/images/pars.png";
 import Loading from "../asset/images/loading.gif";
 import { AiFillCloseCircle } from "react-icons/ai";
-import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import mainContex from "../Context/MainContex";
 
 const Sepet = () => {
   const { setBasket, basket } = useContext(mainContex)
   console.log(basket)
-  const navigate = useNavigate;
   const [load, setLoad] = useState(true);
   useEffect(() => {
     setTimeout(() => {
