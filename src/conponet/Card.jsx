@@ -20,7 +20,7 @@ const Card = ({ item, favorList, setFavorList, setBasket, basket }) => {
       item,
     ]);
     // localStorage.setItem("favoriteList", JSON.stringify(favorList));
-    toastSuccessNotify(`Favorilere ${item.name} eklendi`)
+    // toastSuccessNotify(`Favorilere ${item.name} eklendi`)
   };
 
   const addBasket = (item) => {
@@ -33,8 +33,8 @@ const Card = ({ item, favorList, setFavorList, setBasket, basket }) => {
         ...basket?.filter((product) => product.id !== item.id),
         amountItem,
       ]);
-      localStorage.setItem("basketList", JSON.stringify(basket));
-      toastSuccessNotify(`Sepetteki ${item.name} miktarı artırıldı`);
+      // localStorage.setItem("basketList", JSON.stringify(basket));
+      
     } else {
       setBasket([
         ...basket,

@@ -27,7 +27,7 @@ const Sepet = () => {
   const sumtotal = total.reduce((acc, arr) => acc + arr, 0);
   const deleteBasket = (item) => {
     const newBasket = basket?.filter((product) => product.id !== item);
-    localStorage.setItem("basketList", JSON.stringify(newBasket));
+    // localStorage.setItem("basketList", JSON.stringify(newBasket));
     setBasket(newBasket);
   };
   const amountDesc = (item) => {
@@ -39,7 +39,7 @@ const Sepet = () => {
       basketItem,
       ...basket?.filter((product) => product.id !== item.id),
     ]);
-    toastSuccessNotify(`Sepetteki ${item.name} miktarı artırıldı`);
+    // toastSuccessNotify(`Sepetteki ${item.name} miktarı artırıldı`);
   };
   const amountInc = (item) => {
     const basketItem = basket?.find(
@@ -51,10 +51,10 @@ const Sepet = () => {
       basketItem,
       ...basket?.filter((product) => product.id !== item.id),
     ]);
-    toastSuccessNotify(`Sepetteki ${item.name} miktarı azaltıldı`);
+    // toastSuccessNotify(`Sepetteki ${item.name} miktarı azaltıldı`);
     if (basketItem.amount == 0) {
       setBasket([...basket?.filter((product) => product.id !== item.id)]);
-      toastErrorNotify("Ürün Sepetten Başarı İle Kaldırıldı");
+      // toastErrorNotify("Ürün Sepetten Başarı İle Kaldırıldı");
     }
   };
   if (load) {
@@ -104,7 +104,7 @@ const Sepet = () => {
                 key={index}
               >
                 <img src={item.url} alt="" className="w-48" />
-                <div className="text-center text-slate-800 font-bold font-serif text-lg my-2 ">
+                <div className="text-center text-slate-800 font-bold font-serif text-lg my-2 h-[100px] flex items-center">
                   {item.name}
                 </div>
                 <div className="flex flex-col justify-center items-center">

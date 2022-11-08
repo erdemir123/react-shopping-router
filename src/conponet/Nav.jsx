@@ -5,7 +5,7 @@ import { FaShoppingCart } from "react-icons/fa";
 import { RiHeartAddLine } from "react-icons/ri";
 import MainContex from "../Context/MainContex";
 import { logOut } from "../auth/Firebase";
-import Unknown from "../asset/images/unknown.jpg";
+import Unknown from "../asset/images/user.png";
 
 const Nav = () => {
   const navigate = useNavigate();
@@ -26,7 +26,7 @@ const Nav = () => {
 
       <div className="flex justify-center gap-3 items-center md:flex md:gap-4 md:items-center">
         <img
-          src={currentUser?.photoURL && Unknown}
+          src={Unknown}
           alt=""
           className="w-8 rounded-full"
         />
