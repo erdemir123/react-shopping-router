@@ -100,7 +100,7 @@ const Sepet = () => {
           {basket.map((item, index) => {
             return (
               <div
-                className="flex  flex-col w-80 h-96 justify-center items-center bg-orange-400 relative rounded-lg shadow-sm shadow-slate-500"
+                className="flex  flex-col w-80 py-4 justify-center items-center bg-orange-400 relative rounded-lg shadow-sm shadow-slate-500"
                 key={index}
               >
                 <img src={item.url} alt="" className="w-48" />
